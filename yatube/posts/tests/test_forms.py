@@ -24,7 +24,9 @@ class PostFormTests(TestCase):
         super().setUpClass()
         cls.user = User.objects.create_user(username='Nemo')
         cls.group = Group.objects.create(slug='slug-test')
-        small_gif_2 = (
+
+        small_gif_2 = tempfile.NamedTemporaryFile(delete=True)
+        small_gif_2.write(
             b'\x47\x49\x46\x38\x39\x61\x02\x00'
             b'\x01\x00\x80\x00\x00\x00\x00\x00'
             b'\xFF\xFF\xFF\x21\xF9\x04\x00\x00'
@@ -32,9 +34,11 @@ class PostFormTests(TestCase):
             b'\x02\x00\x01\x00\x00\x02\x02\x0C'
             b'\x0A\x00\x3B'
         )
+        small_gif_2.seek(0)
+        small_gif_2_read = small_gif_2.read()
         uploaded = SimpleUploadedFile(
             name='small.gif_2',
-            content=small_gif_2,
+            content=small_gif_2_read,
             content_type='image/gif'
         )
         cls.post = Post.objects.create(

@@ -273,9 +273,9 @@ class CasheTests(TestCase):
         response = self.authorized_client.get(
             reverse('posts:index')).content
         self.post_cashe.delete()
-        response_cache = self.authorized_client.get(
+        response_cashe = self.authorized_client.get(
             reverse('posts:index')).content
-        self.assertEqual(response, response_cache)
+        self.assertEqual(response, response_cashe)
         cache.clear()
         response_clear = self.authorized_client.get(
             reverse('posts:index')).content
@@ -306,6 +306,11 @@ class Follow_Unfollow_Tests(TestCase):
     def test_follow_profile(self):
         """Пользователь подписывается на других и удаляет подписку."""
 
+        url_profile_follow = reverse(
+            'posts:profile_follow',
+            kwargs={'username': self.user_1})
+        response = self.authorized_client_2.get(url_profile_follow)
+        self.assertEqual(response.status_code, HTTPStatus.FOUND)
         self.assertTrue(Follow.objects.filter(
             user=self.user_2,
             author=self.user_1).exists())

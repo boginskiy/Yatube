@@ -11,6 +11,11 @@ class PostForm(forms.ModelForm):
             'image': 'Добавить изображение',
         }
         fields = ('text', 'group', 'image')
+        help_text = {
+            'text': 'Пост должен содержать историю известного человека',
+            'group': 'Выбрать среди доступных или без группы',
+            'image': 'Тематическое изображение для визуализации поста'
+        }
 
 
 class CommentForm(forms.ModelForm):
