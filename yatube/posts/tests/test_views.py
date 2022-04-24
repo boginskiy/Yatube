@@ -324,15 +324,12 @@ class Follow_Unfollow_Tests(TestCase):
     def test_follow_index(self):
         """Пост появляется у тех кто подписан и нет кто не подписан."""
 
-        url_profile_follow = reverse('posts:profile_follow',
-                                     kwargs={'username': self.user_1})
-        self.authorized_client_2.get(url_profile_follow)
-        response_2 = self.authorized_client_2.get(
+        response_client_2 = self.authorized_client_2.get(
             reverse('posts:follow_index'))
-        self.assertEqual(len(response_2.context['page_obj']), 1)
-        context = response_2.context['page_obj'][0].text
+        self.assertEqual(len(response_client_2.context['page_obj']), 1)
+        context = response_client_2.context['page_obj'][0].text
         self.assertEqual(context, 'тестовый тест')
-        response_3 = self.authorized_client_3.get(
+        response_client_3 = self.authorized_client_3.get(
             reverse('posts:follow_index'))
-        self.assertEqual(len(response_3.context['page_obj']), 0)
-        self.assertEqual(response_3.status_code, HTTPStatus.OK)
+        self.assertEqual(len(response_client_3.context['page_obj']), 0)
+        self.assertEqual(response_client_3.status_code, HTTPStatus.OK)

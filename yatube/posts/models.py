@@ -107,7 +107,7 @@ class Follow(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=['user', 'author'],
-                name='unique-in-module'
+                name='unique-user-subscription'
             )
         ]
         ordering = ['user']

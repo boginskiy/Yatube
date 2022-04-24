@@ -25,7 +25,7 @@ class PostFormTests(TestCase):
         cls.user = User.objects.create_user(username='Nemo')
         cls.group = Group.objects.create(slug='slug-test')
 
-        small_gif_2 = tempfile.NamedTemporaryFile(delete=True)
+        small_gif_2 = tempfile.TemporaryFile()
         small_gif_2.write(
             b'\x47\x49\x46\x38\x39\x61\x02\x00'
             b'\x01\x00\x80\x00\x00\x00\x00\x00'
