@@ -146,11 +146,6 @@ dmypy.json
 .mypy_cache
 
 # папки со статикой и медиа
-<<<<<<< HEAD
 
-=======
-yatube/posts/static/
-yatube/posts/migrations
->>>>>>> eac9b7d401b98e83b4925cf7a34ad890bde36114
 yatube/media/
 

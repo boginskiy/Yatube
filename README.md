@@ -41,5 +41,9 @@ python3 manage.py createsuperuser
 python3 manage.py runserver
 ```
 
+### **Интерфейс**
+
+![](image_interface.png)
+
 ### **Автор**
 [Богинский Дмитрий](https://github.com/boginskiy) - python разработчик
