@@ -42,5 +42,3 @@ python3 manage.py runserver
 
 ### **Автор**
 [Богинский Дмитрий](https://github.com/boginskiy) - python разработчик
-
-[Яндекс.Практикум](https://practicum.yandex.ru/) - курс backend
